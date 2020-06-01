@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>
+            Camera
+        </title>
+        <style>
+            #container{
+                background-color: aqua;
+                height: 700px;
+            
+
+            }
+            #videoElement{
+                border: 8px solid black;
+                
+                background-color: #666666;
+                
+                width: 50%;
+                height: 50%;
+                margin-top: 15%;
+                margin-left:25% ;
+                
+
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <p id="p1" style="font-size: large; text-align: center;"></p>
+            <video autoplay="true" id="videoElement"></video>
+        </div>
+        <script>
+            
+            let video = document.querySelector('#videoElement');
+            navigator.getUserMedia = navigator.getUserMedia||navigator.webkitGetUser||navigator.mozGetUsermedia||navigator.msGetUsermedia||navigator.oGetUsermedia;
+            if(navigator.getUserMedia){
+                navigator.getUserMedia({video:true},videofun,videoError)
+            }
+            function videofun(stream){
+                video.srcObject = stream;
+                //document.getElementById('#p1').innerHTML="Camera Working";
+            }
+            function videoError(){
+                //document.getElementById('#p1').innerHTML="Please allow camera permission";
+            }
+        </script>
+    </body>
+</html>
